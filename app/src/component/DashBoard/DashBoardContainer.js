@@ -1,6 +1,6 @@
 import React from 'react';
 import DashBoard from "../DashBoard/DashBoard";
-import {useQuery} from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import { useMutation } from '@apollo/react-hooks';
 import { openQuery, openMutation } from '../DashBoard/schema'
 

@@ -14,5 +14,11 @@ export default new ApolloClient({
                 }
             }
         }
+    },
+    cacheRedirects: {
+        Query: {
+            user: (_, { id }, { getCacheKey }) =>
+                getCacheKey({ __typename: 'User', id }),
+        }
     }
 });

@@ -18,7 +18,7 @@ export default (props) => {
             component="div"
             aria-labelledby="nested-list-subheader"
         >
-            {props.data && props.data.user && props.data.user.lists.map((list, list_key) => (
+            {props.data?.user?.lists.map((list, list_key) => (
                 <ListItem button key={list_key}>
                     <ListItemText
                         primary={list.name}
