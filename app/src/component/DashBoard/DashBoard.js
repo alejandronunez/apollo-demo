@@ -16,7 +16,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Users from "./Users/UsersContainer";
+import UserList from "../User/List/ListContainer";
 
 function Copyright() {
     return (
@@ -112,15 +112,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard() {
+export default function Dashboard(props) {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+    const {open, handleDrawerOpen} = props;
 
     return (
         <div className={classes.root}>
@@ -131,7 +125,7 @@ export default function Dashboard() {
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={handleDrawerOpen}
+                        onClick={() => handleDrawerOpen(true)}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
                         <MenuIcon/>
@@ -154,7 +148,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
+                    <IconButton onClick={() => handleDrawerOpen(false)}>
                         <ChevronLeftIcon/>
                     </IconButton>
                 </div>
@@ -166,7 +160,7 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="lg" className={classes.container}>
-                    <Users/>
+                    <UserList/>
                     <Box pt={4}>
                         <Copyright/>
                     </Box>
